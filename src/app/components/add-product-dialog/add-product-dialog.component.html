@@ -1,0 +1,92 @@
+<!--<form [formGroup]="myForm" class="container"  (ngSubmit)="onSubmit(myForm)">-->
+<!--  <div class="row">-->
+<!--    <div class="col-12">-->
+<!--      <label>-->
+<!--        Name:-->
+<!--        <input formControlName="name" class="form-control" placeholder="product name">-->
+<!--      </label>-->
+<!--  </div>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <div class="col-12">-->
+<!--      <label>-->
+<!--        Price:-->
+<!--        <input type="number" class="form-control" formControlName="price" placeholder="Price">-->
+<!--      </label>-->
+<!--    </div>-->
+<!--    </div>-->
+
+<!--  <div>-->
+<!--    <label>-->
+<!--      quantity:-->
+<!--      <input formControlName="quantity"  class="form-control" placeholder="Product quantity">-->
+<!--    </label>-->
+
+<!--  </div >-->
+<!--    <div>-->
+<!--      <mat-slide-toggle formControlName="available" class="my-2">Product is available</mat-slide-toggle>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <mat-slide-toggle formControlName="selected"  class="my-2">Product is selected</mat-slide-toggle>-->
+<!--    </div>-->
+<!--        &lt;!&ndash;      <input type="radio" formControlName="selected" placeholder="Product selected">&ndash;&gt;-->
+<!--    <div class="row">-->
+<!--      <div class="col-4"></div>-->
+<!--      <div class="col-4"></div>-->
+<!--      <div class="col-4">-->
+<!--        <button mat-raised-button  color="primary"  type="submit"> Add the Product</button>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--</form>-->
+<div mat-dialog-title>
+  <h1>Product Form</h1>
+</div>
+<form [formGroup]="myForm" (ngSubmit)="addProduct()">
+<div mat-dialog-content>
+
+  <div class="row" id="name">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" type="text" placeholder="The product Name">
+        <mat-error *ngIf="product['name'].touched && product['name'].hasError('required')">Product name is required</mat-error>
+
+      </mat-form-field>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-5">
+      <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input matInput formControlName="quantity" type="number" placeholder="0">
+        <mat-error *ngIf="product['quantity'].touched && product['quantity'].hasError('required')">Product quantity is required</mat-error>
+
+      </mat-form-field>
+
+    </div>
+      <div class="col-5 ms-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="price" type="number" placeholder="0">
+          <mat-error *ngIf="product['price'].touched && product['price'].hasError('required')">Product price is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  <mat-slide-toggle formControlName="available"  >Product is available</mat-slide-toggle>
+
+
+  </div>
+
+
+
+
+<div mat-dialog-actions class="d-flex justify-content-end pt-4">
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button type="submit"  [disabled]="!myForm.valid" color="primary">Save</button>
+</div>
+</form>
+

@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-sm bg-white navbar-light">
+
+  <button class="btn btn-outline-primary ms-2" mat-raised-button  [matMenuTriggerFor]="menu1" >{{selectedMenuContent}}</button>
+  <mat-menu #menu1="matMenu" >
+    <button mat-menu-item  (click)="getSelectedProducts('All Selected') ">All Selected</button>
+    <button mat-menu-item (click)="getSelectedProducts('Selected')">Selected</button>
+    <button mat-menu-item (click)="getSelectedProducts('Not Selected')">Not Selected</button>
+  </mat-menu>
+
+  <ul class="navbar-nav navbar"></ul>
+  <button class="btn btn-outline-primary ms-2" mat-raised-button  [matMenuTriggerFor]="menu2" >{{availableMenuContent}}</button>
+  <mat-menu #menu2="matMenu">
+    <button mat-menu-item  (click)="getAvailableProducts('All Available')"  >All Available</button>
+    <button mat-menu-item (click)="getAvailableProducts('Available')">Available</button>
+    <button mat-menu-item (click)="getAvailableProducts('Not Available')">Not Available</button>
+  </mat-menu>
+    <!--  <button mat-button >Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>-->
+  <ul class="navbar-nav navbar"></ul>
+  <ul class=" navbar navbar-nav ms-auto">
+    <li>
+      <form >
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search"  name="keyword" [(ngModel)]="keyword" (ngModelChange)="UpdateDisplayProducts()">
+<!--          <button class="btn btn-outline-primary " >-->
+<!--           <span class="fa fa-search fa-xs"></span>-->
+<!--          </button>-->
+        </div>
+      </form></li>
+  </ul>
+</nav>
+<div class="container mt-3" *ngIf="dispalyedProducts && dispalyedProducts.length > 0" >
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Product Name</th><th scope="col">Product Price</th><th scope="col">Product Quantity</th><th scope="col">Selected Product</th><th scope="col"> Available Product </th>
+    <th scope="col"> Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of dispalyedProducts">
+      <td >{{product.name}}</td>
+      <td >{{product.price}}</td>
+      <td >{{product.quantity}}</td>
+      <td >{{product.selected}}</td>
+      <td >{{product.available}}</td>
+
+      <td>
+        <button class="btn btn-outline-primary" (click)="selectProduct(product)">
+          <span *ngIf="product.selected==true" class="fa fa-check fa-xs "></span>
+          <span *ngIf="product.selected==false" class="fa fa-times fa-xs"></span>
+
+          </button>
+      </td>
+      <td>
+        <button class="btn btn-outline-primary" (click)="deleteProduct(product)">
+          <span class="fa fa-trash fa-xs"></span>
+        </button>
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class=" container alert alert-primary" role="alert" *ngIf="!dispalyedProducts || dispalyedProducts.length === 0">
+  <h3>No Products Found</h3>
+</div>

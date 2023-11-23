@@ -1,0 +1,11 @@
+.mat-dialog-content{
+  overflow: hidden !important;
+}
+#name{
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+.mat-form-field-appearance-outline .mat-form-field-wrapper{
+  width: 100% !important;
+  margin-bottom: 10px;
+}

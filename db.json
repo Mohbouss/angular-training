@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": 3,
+      "name": "mouse",
+      "price": 300,
+      "quantity": 1,
+      "selected": false,
+      "available": true
+    },
+    {
+      "id": 5,
+      "name": "monitor",
+      "price": 500,
+      "quantity": 1,
+      "selected": false,
+      "available": false
+    },
+    {
+      "id": 7,
+      "name": "speaker",
+      "price": 700,
+      "quantity": 1,
+      "selected": false,
+      "available": false
+    },
+    {
+      "name": "ahmed ",
+      "price": 22,
+      "quantity": 2,
+      "available": true,
+      "selected": false,
+      "id": 8
+    },
+    {
+      "name": "salim",
+      "price": 2500,
+      "quantity": 500,
+      "available": false,
+      "selected": false,
+      "id": 9
+    }
+  ]
+}
